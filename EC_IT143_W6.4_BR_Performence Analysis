@@ -1,0 +1,33 @@
+# EC_IT143_W6.4_BR
+
+SELECT TOP (1000) [step]
+      ,[type]
+      ,[amount]
+      ,[nameOrig]
+      ,[oldbalanceOrg]
+      ,[newbalanceOrig]
+      ,[nameDest]
+      ,[oldbalanceDest]
+      ,[newbalanceDest]
+      ,[isFraud]
+      ,[isFlaggedFraud]
+  FROM [MyFC].[dbo].[PS_20174392719_1491204439457_log]
+
+
+   SELECT nameDest
+   FROM [PS_20174392719_1491204439457_log]
+   WHERE nameDest = ' JENA MOLY';
+
+/*
+Missing Index Details from ~vsBEE5.sql - DESKTOP-S50HMVH.MyFC (DESKTOP-S50HMVH\Bienvenu (102))
+The Query Processor estimates that implementing the following index could improve the query cost by 99.9497%.
+*/
+
+
+USE [MyFC]
+GO
+CREATE NONCLUSTERED INDEX [<Name of Missing Index, sysname,>]
+ON [dbo].[PS_20174392719_1491204439457_log] ([nameDest])
+
+GO
+
